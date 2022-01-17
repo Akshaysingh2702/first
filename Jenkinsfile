@@ -33,10 +33,14 @@ def parameters() {
 }
 
 
-def workspace
+
 node {
+  environment {
+        // optional, not used below. Use only if you need to have an environment variable
+        workspace = WORKSPACE
+    }
+
     stage('parameters') {
-          workspace = env.WORKSPACE
 
         parameters()
      
