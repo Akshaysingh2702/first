@@ -5,7 +5,7 @@ node {
 pipeline {
     agent any;
     
-        parameters([[$class: 'ChoiceParameter', 
+        options([[$class: 'ChoiceParameter', 
     choiceType: 'PT_SINGLE_SELECT', 
     description: 'Repository Type: snapshots or releases', 
     filterLength: 1, 
