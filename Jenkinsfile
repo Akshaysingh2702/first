@@ -34,8 +34,7 @@ pipeline {
                 '''
             ]
         ]
-    ],
-            string(name: 'JENKINS_WORKSPACE', defaultValue: workspace, description: 'Jenkins WORKSPACE')
+    ]
 
     ])
 
