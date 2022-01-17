@@ -32,7 +32,9 @@ def parameters() {
        ])
 ])
 }
-
+def test()
+{ println(workspace)
+}
 node {
     stage('parameters') {
           workspace = env.WORKSPACE
