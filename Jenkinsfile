@@ -4,9 +4,7 @@ node {
 }
 pipeline {
     agent any;
-    parameters {
-        string(name: 'JENKINS_WORKSPACE', defaultValue: workspace, description: 'Jenkins WORKSPACE')
-    }   
+    
         properties([parameters([[$class: 'ChoiceParameter', 
     choiceType: 'PT_SINGLE_SELECT', 
     description: 'Repository Type: snapshots or releases', 
@@ -36,7 +34,9 @@ pipeline {
                 '''
             ]
         ]
-    ]
+    ],
+            string(name: 'JENKINS_WORKSPACE', defaultValue: workspace, description: 'Jenkins WORKSPACE')
+
     ])
 ])
 
