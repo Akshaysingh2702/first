@@ -21,10 +21,11 @@ node {
             classpath: [], 
             sandbox: false, 
             script:
+                def p= workspace
                 ''' 
                 import groovy.json.JsonSlurper
                 def jsonSlurper = new JsonSlurper()
-                def p= workspace
+               
                 p=p.trim()
                 def path = p+'/repo-types.json'
                 data = jsonSlurper.parse(new File(path))
