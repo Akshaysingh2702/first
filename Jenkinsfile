@@ -1,23 +1,25 @@
-gitRepo = 'https://my-repo/repo.git'
-
+def workspace
+node {
+    workspace = env.WORKSPACE
+}
 pipeline {
-    agent any
-
-    environment {
-        // optional, not used below. Use only if you need to have an environment variable
-        GitRepo = gitRepo
-    }
-
-  
-
+    agent any;
     parameters {
-        string defaultValue: gitRepo, description: '', name: 'Test', trim: false
+        string(name: 'JENKINS_WORKSPACE', defaultValue: workspace, description: 'Jenkins WORKSPACE')
     }
-
     stages {
-        stage ('foo') {
+        stage('access env variable') {
             steps {
-                echo 'Hi'
+                // in groovy
+                echo "${env.WORKSPACE}"
+                
+                //in shell
+                sh 'echo $WORKSPACE'
+                
+                // in groovy script 
+                script {
+                    print env.WORKSPACE
+                }
             }
         }
     }
