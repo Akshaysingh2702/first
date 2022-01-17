@@ -2,7 +2,6 @@ def workspace
 node {
     workspace = env.WORKSPACE
 }
-
  properties([parameters([
     [$class: 'ChoiceParameter', 
     choiceType: 'PT_SINGLE_SELECT', 
@@ -33,7 +32,9 @@ node {
                 '''
             ]
         ]
-    ]
+    ],
+      string(name: 'JENKINS_WORKSPACE', defaultValue: workspace, description: 'Jenkins WORKSPACE')
+
         ])
 ])
 pipeline {
