@@ -8,10 +8,7 @@ pipeline {
         GitRepo = gitRepo
     }
 
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '1'))
-        disableConcurrentBuilds()
-    }
+  
 
     parameters {
         string defaultValue: gitRepo, description: '', name: 'Test', trim: false
