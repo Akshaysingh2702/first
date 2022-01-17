@@ -1,5 +1,4 @@
 def parameters() {
-workspace = env.WORKSPACE
  properties([parameters([
     [$class: 'ChoiceParameter', 
     choiceType: 'PT_SINGLE_SELECT', 
@@ -22,7 +21,6 @@ workspace = env.WORKSPACE
                 ''' 
                 import groovy.json.JsonSlurper
                 def jsonSlurper = new JsonSlurper()
-                workspace=get_workspace()
                 def path = workspace+'/repo-types.json'
                 data = jsonSlurper.parse(new File(path))
                 return data
@@ -33,9 +31,9 @@ workspace = env.WORKSPACE
        ])
 ])
 }
-def get_workspace()
-{ return workspace
-}
+
+
+def workspace
 node {
     stage('parameters') {
           workspace = env.WORKSPACE
