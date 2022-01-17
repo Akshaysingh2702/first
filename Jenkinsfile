@@ -24,7 +24,7 @@ node {
                 ''' 
                 import groovy.json.JsonSlurper
                 def jsonSlurper = new JsonSlurper()
-                def p= "echo ${env:WORKSPACE}".execute().text
+                def p= workspace
                 p=p.trim()
                 def path = p+'/repo-types.json'
                 data = jsonSlurper.parse(new File(path))
