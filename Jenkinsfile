@@ -2,10 +2,9 @@ def workspace
 node {
     workspace = env.WORKSPACE
 }
-pipeline {
-    agent any;
-    
-        options([[$class: 'ChoiceParameter', 
+
+ properties([parameters([
+    [$class: 'ChoiceParameter', 
     choiceType: 'PT_SINGLE_SELECT', 
     description: 'Repository Type: snapshots or releases', 
     filterLength: 1, 
@@ -26,7 +25,7 @@ pipeline {
                 ''' 
                 import groovy.json.JsonSlurper
                 def jsonSlurper = new JsonSlurper()
-                def p= workspace
+                def p= "echo ${env:WORKSPACE}".execute().text
                 p=p.trim()
                 def path = p+'/repo-types.json'
                 data = jsonSlurper.parse(new File(path))
@@ -35,8 +34,10 @@ pipeline {
             ]
         ]
     ]
-
-    ])
+        ])
+])
+pipeline {
+    agent any;
 
 
     
