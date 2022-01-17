@@ -21,7 +21,7 @@ node {
             classpath: [], 
             sandbox: false, 
             script:
-                def p= workspace
+         
                 ''' 
                 import groovy.json.JsonSlurper
                 def jsonSlurper = new JsonSlurper()
