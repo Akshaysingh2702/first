@@ -5,7 +5,7 @@ node {
 pipeline {
     agent any;
     
-        options([parameters([[$class: 'ChoiceParameter', 
+        parameters([[$class: 'ChoiceParameter', 
     choiceType: 'PT_SINGLE_SELECT', 
     description: 'Repository Type: snapshots or releases', 
     filterLength: 1, 
@@ -38,7 +38,7 @@ pipeline {
             string(name: 'JENKINS_WORKSPACE', defaultValue: workspace, description: 'Jenkins WORKSPACE')
 
     ])
-])
+
 
     
     stages {
