@@ -40,6 +40,7 @@ node {
           workspace = env.WORKSPACE
 
         parameters()
+     test()
    
         
     }
