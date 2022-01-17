@@ -22,6 +22,7 @@ workspace = env.WORKSPACE
                 ''' 
                 import groovy.json.JsonSlurper
                 def jsonSlurper = new JsonSlurper()
+                workspace=get_workspace()
                 def path = workspace+'/repo-types.json'
                 data = jsonSlurper.parse(new File(path))
                 return data
@@ -32,8 +33,8 @@ workspace = env.WORKSPACE
        ])
 ])
 }
-def test()
-{ println(workspace)
+def get_workspace()
+{ return workspace
 }
 node {
     stage('parameters') {
